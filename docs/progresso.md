@@ -34,9 +34,27 @@
 - Escrito sem Opus (a sessão rodou em Sonnet por pedido do usuário); se o ciclo se mostrar frágil no piloto, revisar com Opus.
 - Ainda não exercitado com aparelho.
 
-## Próxima: Etapa 4 (execução) - piloto sem root (Sonnet)
-**Pré-requisito:** o usuário informar o aparelho piloto e conectá-lo (depuração USB ativa, driver do fabricante instalado, backup recomendado).
-Ler apenas: `CLAUDE.md`, este arquivo e `docs/gates.md`. Rodar pelo `orquestrador`: triagem, baseline, pedido de G1, otimização, re-benchmark, relatório.
-Piloto definido: **Samsung Galaxy A71** (provável codename `a71`, modelo SM-A715F; confirmar pelo inventário). Em 2026-11-02 ainda não estava conectado (`adb devices` vazio). Precisa de driver Samsung USB e depuração USB; lembrar que desbloqueio de bootloader trippa o Knox (G2 só com decisão consciente).
-Feito: `debloat.py` agora lê `criticos_nao_tocar_prefixos` de `perfis/fabricantes/<marca>.yaml` e `pacotes_criticos_nao_tocar` de `perfis/dispositivos/<codename>.yaml` (marca/codename vêm de `inventario.json` ou `--marca`); testado só por importação, sem aparelho.
+## Etapa 4 (preparação) - melhoria no debloat: CONCLUÍDA (Sonnet)
+- `debloat.py` agora lê `criticos_nao_tocar_prefixos` de `perfis/fabricantes/<marca>.yaml` e `pacotes_criticos_nao_tocar` de `perfis/dispositivos/<codename>.yaml` (marca/codename vêm de `inventario.json` ou `--marca`). Testado só por importação (7 casos, sem aparelho).
+- Commit `95ec41a`, enviado ao GitHub.
+
+## BLOQUEIO ATIVO (2026-11-02): piloto Samsung A71 preso em FRP
+- Piloto definido: **Samsung Galaxy A71** (provável codename `a71`, modelo SM-A715F; confirmar pelo inventário quando conectar).
+- O usuário não conseguiu ativar Depuração USB porque o aparelho está em tela de verificação FRP (Factory Reset Protection) após reset — pediu "remoção FRP tool", recusado: isso é bypass de proteção de conta, que só ajudo se for comprovadamente o aparelho do próprio usuário E a situação for uma destas (perguntar qual antes de prosseguir):
+  1. Ele lembra a conta Google/Samsung que estava no aparelho → login normal na tela de verificação, não é bypass.
+  2. Esqueceu a senha mas tem acesso à conta por outro meio → recuperar em accounts.google.com antes de qualquer reset.
+  3. Aparelho de terceiro (compra, herança) sem a conta do proprietário anterior → contatar esse proprietário para remover a conta dele (Configurações > Contas, ou remotamente por "Find My Mobile"/"Find My Device") ou fazer login quando solicitado.
+  4. Aparelho de empresa/escola com MDM → contatar o administrador de TI.
+- Nenhuma instrução de hard reset foi executada ainda (orientação dada, aguardando confirmação do usuário sobre qual caso acima se aplica).
+- **Não prosseguir com adb/scripts no A71 enquanto o FRP não for resolvido pelo caminho legítimo.** Sem depuração USB ativa, nenhum script deste projeto funciona nele.
+
+## Próxima sessão: Etapa 4 (execução) - piloto sem root (Sonnet)
+1. Primeiro, resolver o bloqueio de FRP acima com o usuário (qual dos 4 casos se aplica) antes de tocar no aparelho.
+2. Depois do reset (se necessário) e login bem-sucedido: ativar Opções do desenvolvedor + Depuração USB, instalar driver Samsung, conectar e confirmar com `adb devices`.
+3. Backup recomendado antes de debloat (apps/mídia via `backup.py`; contas e WhatsApp ficam fora do script, orientar backup nativo).
+4. Ler apenas: `CLAUDE.md`, este arquivo e `docs/gates.md`. Rodar pelo `orquestrador`: triagem, baseline, pedido de G1 (parar e aguardar confirmação literal do usuário antes de `estado.py aprovar-gate`), otimização em lotes, re-benchmark, relatório.
+5. Lembrar: desbloqueio de bootloader (G2) trippa o Knox permanentemente; só com decisão consciente do usuário.
 Pronto quando: `relatorio.md` com comparação antes/depois e rollback do debloat testado.
+
+## Resíduo pendente (qualquer sessão)
+- Apagar manualmente `dispositivos/fakecode-FAKE123/` (dados de teste, fora do git; `Remove-Item` direto falhou nesta máquina).
