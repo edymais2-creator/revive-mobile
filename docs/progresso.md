@@ -29,7 +29,13 @@
 - Pendente: resíduo de teste `dispositivos/fakecode-FAKE123/` (dados fictícios, fora do git); apagar manualmente (o PowerShell bloqueia `Remove-Item` nesta pasta).
 - Não testado: agentes e skills ainda não foram exercitados com aparelho real.
 
-## Próxima: Etapa 4 - Orquestrador + piloto sem root (Opus para o desenho; Sonnet na execução)
-Ler apenas: `CLAUDE.md`, `docs/metodologia.md`, `docs/gates.md` e a Etapa 4 do plano (`C:\Users\eduar_pfb8sj5\.claude\plans\iniciaremos-um-projeto-de-glittery-cloud.md`).
-Entregar: `.claude/agents/orquestrador.md` (ciclo de fases/gates e contrato de delegação: entrada = caminho do estado + tarefa; saída = JSON resumido; para em cada gate e pede aprovação ao usuário).
-**Pré-requisito para a execução:** o usuário escolher o aparelho piloto e conectá-lo (depuração USB ativa, driver do fabricante instalado). Depois: triagem, baseline, G1, otimização, re-benchmark e relatório. Pronto quando houver `relatorio.md` com antes/depois e rollback do debloat testado.
+## Etapa 4 - Orquestrador: ESCRITO; piloto PENDENTE
+- `.claude/agents/orquestrador.md` (sonnet, tools: Read, Glob, Grep, PowerShell, Agent): ciclo de fases/gates em tabela, contrato de delegação (entrada = estado + tarefa; saída = JSON compacto), formato de pedido de gate. Decisão de desenho: o orquestrador **nunca aprova gates**; para e devolve o pedido, e a sessão principal registra com `estado.py aprovar-gate` só após a confirmação literal do usuário.
+- Escrito sem Opus (a sessão rodou em Sonnet por pedido do usuário); se o ciclo se mostrar frágil no piloto, revisar com Opus.
+- Ainda não exercitado com aparelho.
+
+## Próxima: Etapa 4 (execução) - piloto sem root (Sonnet)
+**Pré-requisito:** o usuário informar o aparelho piloto e conectá-lo (depuração USB ativa, driver do fabricante instalado, backup recomendado).
+Ler apenas: `CLAUDE.md`, este arquivo e `docs/gates.md`. Rodar pelo `orquestrador`: triagem, baseline, pedido de G1, otimização, re-benchmark, relatório.
+Antes: considerar fazer `debloat.py` ler `criticos_nao_tocar_prefixos` dos perfis (lacuna da Etapa 3).
+Pronto quando: `relatorio.md` com comparação antes/depois e rollback do debloat testado.
