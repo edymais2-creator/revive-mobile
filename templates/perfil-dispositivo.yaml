@@ -1,0 +1,35 @@
+# Perfil de dispositivo - copiar para perfis/dispositivos/<codename>.yaml
+codename: ""
+marca: ""
+modelo: ""
+soc: ""
+ram_gb: 0
+armazenamento_gb: 0
+android:
+  versao_atual: ""
+  ultimo_patch: ""
+  versao_maxima_oficial: ""
+treble: false          # suporte a Project Treble / GSI
+particoes_ab: false
+bootloader:
+  desbloqueavel: ""    # sim | nao | condicional
+  metodo: ""
+  perda_de_dados: true
+  efeitos_garantia: ""  # ex.: Knox, perda de garantia
+suporte_comunidade:
+  lineageos: ""        # versao oficial ou nao
+  eos: ""
+  postmarketos: ""
+  gsi_compativel: ""
+  fontes: []           # URLs consultadas (cache de pesquisa)
+kernel:
+  fonte_disponivel: false
+  versao: ""
+  repositorio: ""
+pacotes_seguros_remover: []   # debloat validado (pm uninstall --user 0)
+pacotes_criticos_nao_tocar: []
+tweaks_validados: []
+problemas_conhecidos: []
+benchmarks_referencia: {}
+trilha_recomendada: ""  # sem-root | rom-oficial | gsi | postmarketos | kernel
+notas: ""

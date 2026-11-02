@@ -1,0 +1,31 @@
+# Backups e dados do aparelho (podem conter dados pessoais)
+dispositivos/*/backups/
+dispositivos/*/logs/*.log
+dispositivos/*/logs/*.txt
+*.log
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Imagens, ROMs e binários grandes
+*.img
+*.zip
+*.tar
+*.tar.gz
+*.ab
+*.apk
+*.bin
+*.lz4
+
+# Dados pessoais / segredos
+*.key
+*.pem
+.env
+dados-pessoais/
+
+# Local
+.claude/settings.local.json
