@@ -37,5 +37,6 @@
 ## Próxima: Etapa 4 (execução) - piloto sem root (Sonnet)
 **Pré-requisito:** o usuário informar o aparelho piloto e conectá-lo (depuração USB ativa, driver do fabricante instalado, backup recomendado).
 Ler apenas: `CLAUDE.md`, este arquivo e `docs/gates.md`. Rodar pelo `orquestrador`: triagem, baseline, pedido de G1, otimização, re-benchmark, relatório.
-Antes: considerar fazer `debloat.py` ler `criticos_nao_tocar_prefixos` dos perfis (lacuna da Etapa 3).
+Piloto definido: **Samsung Galaxy A71** (provável codename `a71`, modelo SM-A715F; confirmar pelo inventário). Em 2026-11-02 ainda não estava conectado (`adb devices` vazio). Precisa de driver Samsung USB e depuração USB; lembrar que desbloqueio de bootloader trippa o Knox (G2 só com decisão consciente).
+Feito: `debloat.py` agora lê `criticos_nao_tocar_prefixos` de `perfis/fabricantes/<marca>.yaml` e `pacotes_criticos_nao_tocar` de `perfis/dispositivos/<codename>.yaml` (marca/codename vêm de `inventario.json` ou `--marca`); testado só por importação, sem aparelho.
 Pronto quando: `relatorio.md` com comparação antes/depois e rollback do debloat testado.
