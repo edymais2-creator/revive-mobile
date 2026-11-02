@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\Users\\eduar_pfb8sj5\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "args": ["D:\\Otimizacao_celulares\\.claude\\hooks\\guard_destrutivo.py"],
+            "onFailure": "block"
+          }
+        ]
+      }
+    ]
+  }
+}
