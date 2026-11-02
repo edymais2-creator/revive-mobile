@@ -1,0 +1,31 @@
+# Perfil conservador de fabricante - Xiaomi/Redmi/POCO (MIUI/HyperOS). Pacotes são CANDIDATOS: validar em cada aparelho.
+marca: xiaomi
+status: inicial-nao-validado
+usar_acao: desativar
+candidatos_debloat:
+  - com.miui.analytics
+  - com.miui.bugreport
+  - com.xiaomi.mipicks                   # GetApps
+  - com.miui.hybrid
+  - com.mi.globalbrowser
+  - com.miui.videoplayer
+  - com.miui.player
+  - com.xiaomi.discover
+  - com.miui.msa.global                  # anúncios do sistema; testar, pode afetar alguns recursos
+criticos_nao_tocar_prefixos:
+  - com.miui.home
+  - com.miui.system
+  - com.miui.core
+  - com.miui.securitycenter
+  - com.miui.powerkeeper
+  - com.miui.guardprovider
+  - com.xiaomi.xmsf                      # push de notificações
+  - com.xiaomi.finddevice
+  - com.android.mms
+  - com.miui.miwallpaper
+bootloader:
+  desbloqueavel: condicional
+  metodo: "Conta Mi vinculada ao aparelho + Mi Unlock Tool; período de espera obrigatório (dias)"
+  perda_de_dados: true
+  efeitos_garantia: "Perde garantia; alguns apps bancários e Widevine L1 podem falhar"
+notas: "Ativar 'Depuração USB (configurações de segurança)' para comandos input. HyperOS recente pode exigir vínculo e prazo maiores para desbloqueio. Validar pacotes antes de promover para perfis/dispositivos."

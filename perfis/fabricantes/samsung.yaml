@@ -1,0 +1,32 @@
+# Perfil conservador de fabricante - Samsung (One UI). Pacotes são CANDIDATOS: validar em cada aparelho.
+marca: samsung
+status: inicial-nao-validado
+usar_acao: desativar            # preferir pm disable-user --user 0
+candidatos_debloat:
+  - com.facebook.appmanager
+  - com.facebook.services
+  - com.facebook.system
+  - com.samsung.android.bixby.agent      # perde Bixby
+  - com.samsung.android.bixby.wakeup
+  - com.samsung.android.app.spage        # Samsung Free / Daily
+  - com.samsung.android.game.gamehome
+  - com.samsung.android.app.tips
+  - com.microsoft.skydrive
+criticos_nao_tocar_prefixos:
+  - com.android.systemui
+  - com.sec.android.app.launcher
+  - com.samsung.android.incallui
+  - com.samsung.android.dialer
+  - com.samsung.android.messaging
+  - com.samsung.android.knox
+  - com.samsung.android.biometrics
+  - com.samsung.android.app.telephonyui
+  - com.sec.imsservice
+  - com.sec.android.provider
+  - com.samsung.android.fmm              # Find My Mobile
+bootloader:
+  desbloqueavel: condicional
+  metodo: "Opção de desenvolvedor 'Desbloqueio OEM' + modo Download; varia por região/operadora"
+  perda_de_dados: true
+  efeitos_garantia: "Trip permanente do Knox; Samsung Pay/Pass e Secure Folder deixam de funcionar"
+notas: "Aparelhos de operadora (EUA/CDMA) costumam ser bloqueados. Snapdragon americano geralmente não desbloqueia. Odin/modo Download exigem driver Samsung. Validar cada pacote no aparelho antes de entrar em perfis/dispositivos."

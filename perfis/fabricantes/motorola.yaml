@@ -1,0 +1,22 @@
+# Perfil conservador de fabricante - Motorola (Android quase stock). Pouco bloat: lista curta de propósito.
+marca: motorola
+status: inicial-nao-validado
+usar_acao: desativar
+candidatos_debloat:
+  - com.facebook.appmanager
+  - com.facebook.services
+  - com.facebook.system
+  # apps de operadora/região variam muito: levantar por aparelho com 'pm list packages -s' antes de listar
+criticos_nao_tocar_prefixos:
+  - com.motorola.ccc                     # serviços centrais Moto (inclui atualização/telemetria do sistema)
+  - com.motorola.actions                 # gestos Moto
+  - com.motorola.android
+  - com.android.systemui
+  - com.android.launcher3
+  - com.motorola.cn
+bootloader:
+  desbloqueavel: condicional
+  metodo: "Código de desbloqueio pelo site oficial da Motorola (fastboot oem get_unlock_data); alguns modelos de operadora não liberam"
+  perda_de_dados: true
+  efeitos_garantia: "Aviso de bootloader desbloqueado na inicialização; garantia pode ser afetada; SafetyNet/Play Integrity pode falhar"
+notas: "Boa comunidade de LineageOS/GSI para muitos modelos, mas verificar o codename. Validar pacotes no aparelho antes de promover para perfis/dispositivos."

@@ -10,7 +10,7 @@ from adb_util import Adb, agora, dry, emitir, parser_base
 
 # métrica -> True se "menor é melhor"
 MENOR_MELHOR = {"boot_s": True, "app_ms": True, "jank_pct": True, "p90_ms": True, "ram_livre_mb": False}
-LIMITE_REGRESSAO = 0.10
+LIMITE_REGRESSAO = 0.05  # docs/metodologia.md: regressão > 5% reverte a mudança
 
 
 def num(padrao, texto, tipo=float):

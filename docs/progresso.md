@@ -20,6 +20,16 @@
 - Projeto movido para `D:\Otimizacao_celulares`; remoto `origin` = https://github.com/edymais2-creator/revive-mobile (gh autenticado).
 - Não validado com aparelho real: os scripts só rodaram em `--dry-run`; o parse da saída do adb será exercitado na Etapa 4.
 
-## Próxima: Etapa 3 - Skills e agentes da trilha sem root (Sonnet / revisão Haiku)
-Ler apenas: `CLAUDE.md`, `docs/metodologia.md`, `docs/gates.md` e a Etapa 3 do plano (`C:\Users\eduar_pfb8sj5\.claude\plans\iniciaremos-um-projeto-de-glittery-cloud.md`).
-Entregar: skills `setup-host`, `diagnostico-adb`, `backup-verificado`, `debloat-seguro`, `tuning-android`, `protocolo-benchmark`, `relatorio-e-perfil` (≤ ~80 linhas cada, detalhes em `references/`); agentes `coletor`, `triagem`, `otimizador-android`, `qa-benchmark`, `documentador`; perfis iniciais conservadores Samsung, Xiaomi, Motorola.
+## Etapa 3 - Skills e agentes da trilha sem root: CONCLUÍDA (Sonnet)
+- Skills em `.claude/skills/` (todas ≤ 30 linhas): `setup-host`, `diagnostico-adb`, `backup-verificado`, `debloat-seguro`, `tuning-android`, `protocolo-benchmark`, `relatorio-e-perfil`; `references/` em `setup-host` (drivers USB) e `diagnostico-adb` (problemas comuns).
+- Agentes em `.claude/agents/`: `coletor` (haiku), `triagem` (sonnet), `otimizador-android` (sonnet), `qa-benchmark` (haiku), `documentador` (haiku).
+- Perfis de fabricante `perfis/fabricantes/{samsung,xiaomi,motorola}.yaml`: listas de candidatos a debloat e pacotes críticos, **não validados em aparelho real** (`status: inicial-nao-validado`).
+- Ajuste: `LIMITE_REGRESSAO` em `scripts/benchmark.py` passou de 10% para 5% (alinhado a `docs/metodologia.md`).
+- Lacuna conhecida: `debloat.py` só barra os críticos do Android (lista interna); os `criticos_nao_tocar_prefixos` dos perfis de fabricante ainda não são lidos pelo script, a skill instrui a respeitá-los. Candidato a melhoria na Etapa 4.
+- Pendente: resíduo de teste `dispositivos/fakecode-FAKE123/` (dados fictícios, fora do git); apagar manualmente (o PowerShell bloqueia `Remove-Item` nesta pasta).
+- Não testado: agentes e skills ainda não foram exercitados com aparelho real.
+
+## Próxima: Etapa 4 - Orquestrador + piloto sem root (Opus para o desenho; Sonnet na execução)
+Ler apenas: `CLAUDE.md`, `docs/metodologia.md`, `docs/gates.md` e a Etapa 4 do plano (`C:\Users\eduar_pfb8sj5\.claude\plans\iniciaremos-um-projeto-de-glittery-cloud.md`).
+Entregar: `.claude/agents/orquestrador.md` (ciclo de fases/gates e contrato de delegação: entrada = caminho do estado + tarefa; saída = JSON resumido; para em cada gate e pede aprovação ao usuário).
+**Pré-requisito para a execução:** o usuário escolher o aparelho piloto e conectá-lo (depuração USB ativa, driver do fabricante instalado). Depois: triagem, baseline, G1, otimização, re-benchmark e relatório. Pronto quando houver `relatorio.md` com antes/depois e rollback do debloat testado.
